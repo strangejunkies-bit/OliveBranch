@@ -45,11 +45,16 @@
   }
 
   function openSection(name, anchor) {
-    document.querySelectorAll('.page').forEach(panel => panel.classList.remove('active'));
-    document.getElementById('view-' + name).classList.add('active');
+    const view = document.getElementById('view-' + name);
+    if (!view) return;
 
-    document.getElementById('homeLink').classList.toggle('active', name === 'home');
-    document.getElementById('menuLink').classList.toggle('active', name === 'menu');
+    document.querySelectorAll('.page').forEach(panel => panel.classList.remove('active'));
+    view.classList.add('active');
+
+    const homeLink = document.getElementById('homeLink');
+    const menuLink = document.getElementById('menuLink');
+    if (homeLink) homeLink.classList.toggle('active', name === 'home');
+    if (menuLink) menuLink.classList.toggle('active', name === 'menu');
 
     const compactHome = document.getElementById('homeLinkCompact');
     if (compactHome) {
@@ -71,6 +76,13 @@
       }, 50);
     }
   }
+
+  document.querySelectorAll('[data-section]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      openSection(link.dataset.section);
+    });
+  });
 
   const menuGroups = document.querySelectorAll('#view-menu .menu-group');
   const categoryLinks = document.querySelectorAll('.category-link');

@@ -76,6 +76,7 @@
   }
   .brand-mark {
     display: block;
+    pointer-events: none;
     width: auto;
     height: 48px;
     max-width: min(42vw,190px);
@@ -101,13 +102,23 @@
     margin-bottom: 1px;
   }
   .main-nav {
+    position: relative;
+    z-index: 2;
     order: 1;
     display: flex;
     align-items: center;
     gap: 0;
     list-style: none;
+    pointer-events: auto;
   }
   .main-nav a {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    pointer-events: auto;
     color: rgba(255,255,255,.72);
     text-decoration: none;
     font-size: .6rem;
