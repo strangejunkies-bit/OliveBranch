@@ -120,3 +120,13 @@
       }
     });
   });
+
+  document.addEventListener('click', event => {
+    const button = event.target.closest('.action, .btn, .order-button');
+    if (!button) return;
+    button.classList.remove('button-pop');
+    void button.offsetWidth;
+    button.classList.add('button-pop');
+    setTimeout(() => button.classList.remove('button-pop'), 360);
+  });
+

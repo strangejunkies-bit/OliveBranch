@@ -52,7 +52,6 @@
     z-index: 100;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 1.25rem;
     height: var(--nav-h);
     background: rgba(29,34,38,0.92);
@@ -61,22 +60,29 @@
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .brand {
+    order: 2;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: #fff;
     font-family: 'Cormorant Garamond',serif;
     font-size: 1.35rem;
     font-weight: 500;
-    color: #fff;
-    text-decoration: none;
     letter-spacing: .05em;
     line-height: 1;
-    cursor: pointer;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
+    text-decoration: none;
   }
   .brand-mark {
-    height: 38px;
-    width: auto;
     display: block;
+    width: auto;
+    height: 38px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));
+    transition: transform .28s ease, filter .28s ease;
+  }
+  .brand:hover .brand-mark {
+    transform: translateY(-2px) scale(1.035);
+    filter: drop-shadow(0 7px 14px rgba(198,147,58,.28));
   }
 
   @media(min-width:768px) {
@@ -92,10 +98,11 @@
     margin-bottom: 1px;
   }
   .main-nav {
+    order: 1;
     display: flex;
+    align-items: center;
     gap: 0;
     list-style: none;
-    align-items: center;
   }
   .main-nav a {
     color: rgba(255,255,255,.72);
@@ -121,7 +128,11 @@
     margin-left: .25rem;
   }
   .order-button:hover {
-    opacity: .88;
+    opacity: .92;
+    transform: translateY(-2px);
+  }
+  .order-button:active {
+    transform: translateY(1px) scale(.975);
   }
   .compact-nav-item {
     display: none;
@@ -198,7 +209,7 @@
   .hero-backdrop-pan {
     position: absolute;
     inset: -5%;
-    background-image: url("images/hero.jpg");
+    background-image: url("../images/hero.jpg");
     background-size: cover;
     background-position: center;
     animation: hero-pan 18s ease-in-out infinite alternate;
@@ -276,34 +287,65 @@
     line-height: 1.65;
   }
   .hero-actions {
-    margin-top: 2rem;
     display: flex;
-    flex-wrap: wrap;
+    width: min(100%,360px);
+    margin: 2rem auto 0;
     gap: .75rem;
-    justify-content: center;
+  }
+  .hero-actions .action {
+    flex: 1 1 0;
+    min-width: 0;
   }
   .action {
-    background: var(--brand);
-    color: #fff;
-    padding: .8rem 1.4rem;
-    border-radius: 4px;
-    font-size: .65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .18em;
-    text-decoration: none;
-    transition: all .25s;
-    border: none;
-    cursor: pointer;
-    white-space: nowrap;
-    min-height: 44px;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-height: 44px;
+    padding: .8rem 1.4rem;
+    border: 0;
+    border-radius: 4px;
+    background: var(--brand);
+    color: #fff;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px -12px rgba(0,0,0,.65);
+    transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+  }
+  .action::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -80%;
+    left: -45%;
+    width: 28%;
+    height: 260%;
+    background: rgba(255,255,255,.24);
+    transform: rotate(24deg) translateX(-260%);
+    transition: transform .55s ease;
   }
   .action:hover {
-    opacity: .88;
-    box-shadow: 0 12px 30px -10px var(--brand);
+    transform: translateY(-3px);
+    background: #96774d;
+    box-shadow: 0 16px 30px -12px rgba(0,0,0,.68);
+  }
+  .action:hover::before {
+    transform: rotate(24deg) translateX(620%);
+  }
+  .action:active {
+    transform: translateY(1px) scale(.975);
+    box-shadow: 0 5px 12px -8px rgba(0,0,0,.72);
+  }
+  .action.button-pop,
+  .btn.button-pop,
+  .order-button.button-pop {
+    animation: button-pop .34s ease;
   }
   .scroll-cue {
     position: absolute;
@@ -1182,8 +1224,12 @@
     white-space: nowrap;
   }
   .btn:hover {
-    opacity: .88;
-    box-shadow: 0 10px 24px -8px var(--brand);
+    opacity: .92;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px -10px var(--brand);
+  }
+  .btn:active {
+    transform: translateY(1px) scale(.975);
   }
   .action-outline {
     background: transparent;
@@ -1265,11 +1311,11 @@
 
   @media(max-width:420px) {
     .hero-actions {
-      flex-wrap: wrap;
-      justify-content: center;
+      width: min(100%,340px);
     }
-    .action {
-      padding: .75rem 1.25rem;
+    .hero-actions .action {
+      padding: .75rem .8rem;
+      letter-spacing: .13em;
     }
   }
 
@@ -1278,5 +1324,44 @@
     .page > div:last-child {
       flex-wrap: wrap;
       line-height: 1.5;
+    }
+  }
+
+
+  /* Dove cursor: The Sword of the Heart / RW Designer, CC BY. */
+  html,
+  body,
+  a,
+  button,
+  .brand,
+  .footer-brand,
+  .category-tile {
+    cursor: url('../cursor/dove.png') 1 1, auto;
+  }
+
+  @keyframes button-pop {
+    0% { transform: scale(1); }
+    45% { transform: scale(.965); }
+    100% { transform: scale(1); }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    html,
+    body,
+    a,
+    button,
+    .brand,
+    .footer-brand,
+    .category-tile {
+      cursor: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-mark,
+    .action,
+    .action::before {
+      animation: none !important;
+      transition: none !important;
     }
   }
