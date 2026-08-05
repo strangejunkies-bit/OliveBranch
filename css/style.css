@@ -52,6 +52,7 @@
     z-index: 100;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 1.25rem;
     height: var(--nav-h);
     background: rgba(29,34,38,0.92);
@@ -76,7 +77,9 @@
   .brand-mark {
     display: block;
     width: auto;
-    height: 38px;
+    height: 48px;
+    max-width: min(42vw,190px);
+    object-fit: contain;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));
     transition: transform .28s ease, filter .28s ease;
   }
@@ -87,7 +90,7 @@
 
   @media(min-width:768px) {
     .brand-mark {
-      height: 42px;
+      height: 52px;
     }
   }
   .brand small {
@@ -164,7 +167,8 @@
       display: flex;
     }
     .brand-mark {
-      height: 32px;
+      height: 40px;
+      max-width: 132px;
     }
     .main-nav {
       gap: .1rem;
@@ -287,14 +291,16 @@
     line-height: 1.65;
   }
   .hero-actions {
-    display: flex;
-    width: min(100%,360px);
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    width: min(100%,330px);
     margin: 2rem auto 0;
     gap: .75rem;
   }
   .hero-actions .action {
-    flex: 1 1 0;
+    width: 100%;
     min-width: 0;
+    margin: 0;
   }
   .action {
     position: relative;
@@ -316,7 +322,7 @@
     text-transform: uppercase;
     white-space: nowrap;
     box-shadow: 0 8px 20px -12px rgba(0,0,0,.65);
-    transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    transition: transform .22s cubic-bezier(.2,.8,.2,1), box-shadow .22s ease, background .22s ease, filter .22s ease;
   }
   .action::before {
     content: '';
@@ -334,6 +340,7 @@
     transform: translateY(-3px);
     background: #96774d;
     box-shadow: 0 16px 30px -12px rgba(0,0,0,.68);
+    filter: brightness(1.05);
   }
   .action:hover::before {
     transform: rotate(24deg) translateX(620%);
@@ -1292,7 +1299,8 @@
       padding: 0 .85rem;
     }
     .brand-mark {
-      height: 28px;
+      height: 36px;
+      max-width: 118px;
     }
     .icon-button {
       padding: .4rem .4rem;
@@ -1328,39 +1336,54 @@
   }
 
 
-  /* Dove cursor: The Sword of the Heart / RW Designer, CC BY. */
-  html,
-  body,
-  a,
-  button,
-  .brand,
-  .footer-brand,
-  .category-tile {
-    cursor: url('../cursor/dove.png') 1 1, auto;
+  /* Desktop dove pointer. Touch devices keep their normal behavior. */
+  .dove-pointer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2147483647;
+    width: 38px;
+    height: 38px;
+    pointer-events: none;
+    opacity: 0;
+    will-change: transform;
+    transform: translate3d(-100px,-100px,0);
+    transform-origin: 5px 5px;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,.38));
+    transition: opacity .12s ease, filter .16s ease;
+  }
+  .dove-pointer.visible {
+    opacity: 1;
+  }
+  .dove-pointer.hovering {
+    filter: drop-shadow(0 5px 8px rgba(198,147,58,.55));
   }
 
   @keyframes button-pop {
     0% { transform: scale(1); }
-    45% { transform: scale(.965); }
+    42% { transform: translateY(1px) scale(.955); }
     100% { transform: scale(1); }
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    html.dove-cursor,
+    html.dove-cursor body,
+    html.dove-cursor body * {
+      cursor: none !important;
+    }
+  }
+
   @media (hover: none), (pointer: coarse) {
-    html,
-    body,
-    a,
-    button,
-    .brand,
-    .footer-brand,
-    .category-tile {
-      cursor: auto;
+    .dove-pointer {
+      display: none;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .brand-mark,
     .action,
-    .action::before {
+    .action::before,
+    .dove-pointer {
       animation: none !important;
       transition: none !important;
     }
