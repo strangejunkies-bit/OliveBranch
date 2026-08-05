@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Olive Branch · Authentic Middle Eastern in Ypsilanti, MI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Dancing+Script:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+  :root {
+    --brand: #8B6F47;
+    --accent: #C6933A;
+    --ink: #1D2226;
+    --cream: #FAF7F2;
+    --bg: #FDFCFA;
+    --secondary: #F5F0E8;
+    --border: #E2D9CC;
+    --rule: #D4C9B8;
+    --muted: #7A7167;
+    --fg: #1D2226;
+    --banner-box: rgba(120,100,55,0.72);
+    --nav-h: 64px;
+    --olive: #576b38;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: 'Inter',sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .page {
+    display: none;
+  }
+  .page.active {
+    display: block;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--nav-h);
+    background: rgba(29,34,38,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .brand {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: .05em;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .brand-mark {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
+
+  @media(min-width:768px) {
+    .brand-mark {
+      height: 42px;
+    }
+  }
+  .brand small {
+    font-family: 'Dancing Script',cursive;
+    font-size: .72rem;
+    display: block;
+    color: var(--accent);
+    margin-bottom: 1px;
+  }
+  .main-nav {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    align-items: center;
+  }
+  .main-nav a {
+    color: rgba(255,255,255,.72);
+    text-decoration: none;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    transition: color .2s;
+    cursor: pointer;
+    padding: .5rem .75rem;
+    white-space: nowrap;
+  }
+  .main-nav a:hover,
+  .main-nav a.active {
+    color: var(--accent);
+  }
+  .order-button {
+    background: var(--olive) !important;
+    color: #fff !important;
+    padding: .5rem 1rem !important;
+    border-radius: 3px;
+    margin-left: .25rem;
+  }
+  .order-button:hover {
+    opacity: .88;
+  }
+  .compact-nav-item {
+    display: none;
+  }
+  .icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,.78);
+    padding: .4rem .55rem;
+    cursor: pointer;
+    transition: color .2s;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .icon-button:hover,
+  .icon-button.active {
+    color: var(--accent);
+  }
+  .icon-button svg {
+    display: block;
+  }
+
+  @media(max-width:479px) {
+    .main-nav li.full-nav-item {
+      display: none;
+    }
+    .main-nav li.compact-nav-item {
+      display: flex;
+    }
+    .brand-mark {
+      height: 32px;
+    }
+    .main-nav {
+      gap: .1rem;
+    }
+    .order-button {
+      padding: .5rem .85rem !important;
+      font-size: .58rem;
+    }
+  }
+
+  @media(min-width:480px) and (max-width:767px) {
+    .main-nav a {
+      font-size: .58rem;
+      padding: .5rem .6rem;
+      letter-spacing: .15em;
+    }
+  }
+  .hero {
+    position: relative;
+    height: 100svh;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-backdrop {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .hero-backdrop-pan {
+    position: absolute;
+    inset: -5%;
+    background-image: url("images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    animation: hero-pan 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes hero-pan {
+    0% {
+      transform: scale(1.08) translate(0,0);
+    }
+    33% {
+      transform: scale(1.06) translate(-2%,-1%);
+    }
+    66% {
+      transform: scale(1.1) translate(2%,1%);
+    }
+    100% {
+      transform: scale(1.05) translate(-1%,2%);
+    }
+  }
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,rgba(29,34,38,.62) 0%,rgba(29,34,38,.38) 50%,rgba(29,34,38,.82) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    padding: 0 1.25rem;
+    width: 100%;
+    max-width: 700px;
+  }
+  .hero-greeting {
+    font-family: 'Dancing Script',cursive;
+    font-size: clamp(1.5rem,5vw,2.2rem);
+    color: #fff;
+    margin-bottom: .75rem;
+  }
+  .hero-emblem {
+    width: clamp(220px,42vw,420px);
+    height: auto;
+    margin: 0 auto 1.25rem;
+    display: block;
+    filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
+  }
+  .hero-heading {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(3.2rem,12vw,9rem);
+    font-weight: 300;
+    letter-spacing: -.02em;
+    line-height: .9;
+  }
+  .hero-flourish {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    justify-content: center;
+    margin-top: 1.25rem;
+  }
+  .hero-flourish .line {
+    height: 1px;
+    width: 32px;
+    background: var(--accent);
+  }
+  .hero-subtitle {
+    font-size: clamp(.5rem,.8rem + .2vw,.65rem);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    color: rgba(255,255,255,.88);
+  }
+  .hero-lead {
+    margin-top: 1.5rem;
+    font-size: clamp(.85rem,2.2vw,1.05rem);
+    color: rgba(255,255,255,.8);
+    line-height: 1.65;
+  }
+  .hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    justify-content: center;
+  }
+  .action {
+    background: var(--brand);
+    color: #fff;
+    padding: .8rem 1.4rem;
+    border-radius: 4px;
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    text-decoration: none;
+    transition: all .25s;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .action:hover {
+    opacity: .88;
+    box-shadow: 0 12px 30px -10px var(--brand);
+  }
+  .scroll-cue {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .55rem;
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    color: rgba(255,255,255,.5);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% {
+      opacity: .5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  .specialties {
+    padding: 4rem 0 5rem;
+    background: color-mix(in srgb,var(--secondary) 50%,transparent);
+  }
+  .specialties-heading {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(2rem,6vw,4rem);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 0 1rem;
+  }
+  .specialties-heading .italic {
+    font-family: 'Dancing Script',cursive;
+    font-size: clamp(2.2rem,7vw,5rem);
+    color: var(--accent);
+    vertical-align: baseline;
+  }
+  .specialty-grid {
+    display: grid;
+    gap: 1.5rem;
+    padding: 0 1.25rem;
+  }
+
+  @media(min-width:640px) {
+    .specialty-grid {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+
+  @media(min-width:960px) {
+    .specialty-grid {
+      grid-template-columns: repeat(3,1fr);
+      gap: 2rem;
+      padding: 0;
+    }
+  }
+  .specialty {
+    background: var(--bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -10px rgba(0,0,0,.22);
+  }
+  .specialty-photo {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .specialty-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s ease;
+  }
+  .specialty:hover .specialty-photo img {
+    transform: scale(1.05);
+  }
+  .specialty-text {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  .specialty-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .5rem;
+    margin-bottom: .5rem;
+    flex-wrap: wrap;
+  }
+  .specialty-name {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+  .specialty-price {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1.15rem;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .specialty-note {
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .full-menu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    color: var(--fg);
+    text-decoration: none;
+    transition: color .2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    min-height: 44px;
+  }
+  .full-menu-link:hover {
+    color: var(--brand);
+  }
+  .menu-preview {
+    padding: 4rem 0 5rem;
+    background: var(--bg);
+  }
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .block-heading {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .block-kicker {
+    font-family: 'Dancing Script',cursive;
+    font-size: 1.7rem;
+    color: var(--olive);
+    display: block;
+  }
+  .block-title {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(2rem,5vw,3.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-top: .15rem;
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .divider .line {
+    height: 1px;
+    width: 40px;
+    background: var(--border);
+  }
+  .divider .ornament {
+    color: var(--accent);
+    font-size: 1rem;
+  }
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: .75rem;
+  }
+
+  @media(min-width:600px) {
+    .category-grid {
+      grid-template-columns: repeat(3,1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media(min-width:900px) {
+    .category-grid {
+      grid-template-columns: repeat(4,1fr);
+    }
+  }
+
+  @media(min-width:1100px) {
+    .category-grid {
+      grid-template-columns: repeat(7,1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media(min-width:1300px) {
+    .category-grid {
+      grid-template-columns: repeat(9,1fr);
+      gap: .75rem;
+    }
+  }
+  .category-tile {
+    position: relative;
+    display: block;
+    aspect-ratio: 3/5;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px -12px rgba(29,34,38,.4);
+    cursor: pointer;
+  }
+  .category-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s ease;
+  }
+  .category-tile:hover img {
+    transform: scale(1.08);
+  }
+  .tile-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,rgba(29,34,38,.85) 0%,rgba(29,34,38,.15) 55%,transparent 100%);
+  }
+  .tile-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: .75rem .5rem;
+    text-align: center;
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(1.1rem,3vw,1.5rem);
+    color: #fff;
+    letter-spacing: .04em;
+  }
+  .spaced-top {
+    margin-top: 2.5rem;
+  }
+  .centered {
+    text-align: center;
+  }
+  .weekend-special {
+    position: relative;
+    min-height: 420px;
+    padding: 4rem 0;
+    background-size: cover;
+    background-position: center;
+    border-top: 5px solid var(--olive);
+  }
+
+  @media(min-width:768px) {
+    .weekend-special {
+      background-attachment: fixed;
+    }
+  }
+  .weekend-shade {
+    position: absolute;
+    inset: 0;
+    background: rgba(29,34,38,.58);
+  }
+  .weekend-inner {
+    position: relative;
+    z-index: 10;
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .weekend-panel {
+    position: relative;
+    background: rgba(250,247,242,.96);
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,.35);
+    padding: 2rem 2.5rem 2.5rem;
+    text-align: center;
+    border-radius: 14px;
+    margin: 0 .5rem;
+    border-top: 4px solid var(--olive);
+  }
+
+  @media(min-width:768px) {
+    .weekend-panel {
+      padding: 3rem 3.5rem 3.5rem;
+      margin: 0;
+    }
+  }
+  .weekend-heading {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(1.5rem,4vw,2.8rem);
+    color: var(--ink);
+    margin-bottom: .75rem;
+    font-weight: 400;
+  }
+  .weekend-name {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(1.2rem,3vw,1.8rem);
+    color: var(--brand);
+    margin-bottom: .65rem;
+  }
+  .weekend-name .accent {
+    color: var(--accent);
+  }
+  .weekend-note {
+    font-size: clamp(.8rem,1.5vw,.9rem);
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+  .option-tag {
+    display: inline-block;
+    background: var(--olive);
+    color: #fff;
+    font-family: 'Inter',sans-serif;
+    font-size: .55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    padding: .25rem .75rem;
+    border-radius: 3px;
+    margin-bottom: .75rem;
+  }
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 1.25rem;
+  }
+  .carousel-dot {
+    height: 8px;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    background: rgba(122,113,103,.35);
+    transition: all .3s;
+    padding: 0;
+    min-width: 8px;
+    min-height: 8px;
+  }
+  .carousel-dot.active {
+    width: 28px;
+    background: var(--brand);
+  }
+  .carousel-dot:not(.active) {
+    width: 8px;
+  }
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.14);
+    transition: background .2s;
+    color: var(--ink);
+  }
+  .arrow-prev {
+    left: -0.25rem;
+  }
+  .arrow-next {
+    right: -0.25rem;
+  }
+
+  @media(min-width:768px) {
+    .arrow-prev {
+      left: -1.5rem;
+    }
+    .arrow-next {
+      right: -1.5rem;
+    }
+  }
+  .catering {
+    position: relative;
+    min-height: 400px;
+    padding: 5rem 0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media(min-width:768px) {
+    .catering {
+      height: 60vh;
+      min-height: 440px;
+      padding: 0;
+    }
+  }
+  .catering-shade {
+    position: absolute;
+    inset: 0;
+    background: rgba(29,34,38,.68);
+  }
+  .catering-inner {
+    position: relative;
+    z-index: 10;
+    color: #fff;
+    padding: 0 1.25rem;
+    width: 100%;
+  }
+  .catering-kicker {
+    font-family: 'Dancing Script',cursive;
+    font-size: clamp(1.6rem,4vw,2.5rem);
+    color: var(--olive);
+    display: block;
+    margin-bottom: .6rem;
+  }
+  .catering-heading {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(2.5rem,8vw,5rem);
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+  .catering-lead {
+    max-width: 520px;
+    color: rgba(255,255,255,.85);
+    font-size: clamp(.85rem,1.8vw,1rem);
+    line-height: 1.65;
+    margin: 0 auto 1.75rem;
+  }
+  .visit {
+    padding: 4rem 1.25rem 5rem;
+    background: var(--bg);
+  }
+  .visit-grid {
+    display: grid;
+    gap: 2.5rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media(min-width:640px) {
+    .visit-grid {
+      grid-template-columns: repeat(3,1fr);
+    }
+  }
+  .visit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .65rem;
+  }
+  .visit-card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .65rem;
+    transition: color .2s;
+  }
+  .visit-card a:hover {
+    color: var(--brand);
+  }
+  .visit-icon {
+    color: var(--accent);
+  }
+  .visit-title {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1.4rem;
+  }
+  .visit-line {
+    font-size: .82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .menu-banner {
+    position: relative;
+    padding-top: var(--nav-h);
+    height: clamp(200px,35vw,320px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(87,107,56,.72);
+  }
+  .menu-banner-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(20,28,18,.55) 100%);
+  }
+  .menu-banner-inner {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #fff;
+    padding-bottom: 2rem;
+    padding: 0 1rem 2rem;
+  }
+  .menu-banner-inner .eyebrow {
+    font-family: 'Dancing Script',cursive;
+    font-size: clamp(1.2rem,3vw,1.6rem);
+    color: var(--accent);
+    display: block;
+  }
+  .menu-banner-inner h1 {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(2rem,7vw,5rem);
+    font-weight: 300;
+    line-height: .95;
+  }
+  .menu-banner-flourish {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    margin-top: .65rem;
+  }
+  .menu-banner-flourish .line {
+    height: 1px;
+    width: 28px;
+    background: rgba(255,255,255,.35);
+  }
+  .menu-banner-flourish span {
+    font-size: clamp(.5rem,.6rem + .1vw,.6rem);
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    color: rgba(255,255,255,.65);
+  }
+  .category-bar {
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 90;
+    background: rgba(253,252,250,.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .category-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 1px;
+    width: 40px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(253,252,250,0), rgba(253,252,250,.97));
+  }
+  .category-bar-track {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .category-bar-track::-webkit-scrollbar {
+    display: none;
+  }
+  .category-link {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .75rem .85rem;
+    font-size: .58rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--muted);
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .2s,border-color .2s;
+    min-height: 44px;
+  }
+  .category-link:hover {
+    color: var(--brand);
+  }
+  .category-link.active {
+    color: var(--olive);
+    border-bottom-color: var(--olive);
+  }
+  .section-banner {
+    width: 100%;
+    height: clamp(160px,28vw,260px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a2520;
+  }
+  .section-banner img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform .6s ease;
+  }
+  .section-banner:hover img {
+    transform: scale(1.03);
+  }
+  .section-banner-caption {
+    position: absolute;
+    z-index: 10;
+    background: var(--banner-box);
+    padding: .7rem 1.75rem;
+    text-align: center;
+  }
+
+  @media(min-width:768px) {
+    .section-banner-caption {
+      padding: .85rem 3rem;
+    }
+  }
+  .section-banner-caption span {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(1.3rem,4vw,2.2rem);
+    font-weight: 500;
+    font-variant: small-caps;
+    letter-spacing: .1em;
+    color: #fff;
+    display: block;
+  }
+  .menu-group {
+    margin-bottom: 0;
+    scroll-margin-top: calc(var(--nav-h) + 44px);
+  }
+  .menu-group-body {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 3.5rem;
+  }
+
+  @media(min-width:768px) {
+    .menu-group-body {
+      padding: 3.5rem 2.5rem 5rem;
+    }
+  }
+  .menu-group-note {
+    font-size: .75rem;
+    color: var(--muted);
+    line-height: 1.55;
+    font-style: italic;
+    margin-bottom: 1.75rem;
+  }
+  .section-rule {
+    height: 1px;
+    background: var(--border);
+  }
+  .dish-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+  }
+
+  @media(min-width:640px) {
+    .dish-list {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3rem;
+      row-gap: 2rem;
+    }
+  }
+
+  @media(min-width:900px) {
+    .dish-list {
+      column-gap: 4rem;
+      row-gap: 2.25rem;
+    }
+  }
+  .dish-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: .4rem;
+  }
+  .dish-title {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1rem;
+    font-weight: 500;
+    font-variant: small-caps;
+    letter-spacing: .06em;
+    color: var(--ink);
+    flex-shrink: 0;
+    max-width: 60%;
+  }
+
+  @media(min-width:480px) {
+    .dish-title {
+      max-width: none;
+      white-space: nowrap;
+    }
+  }
+  .dish-leader {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    margin: 0 .65rem;
+    min-width: 12px;
+  }
+  .dish-cost {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .dish-detail {
+    font-size: .78rem;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 44ch;
+  }
+  .dish-wide {
+    grid-column: 1/-1;
+  }
+  .dish-wide .dish-detail {
+    max-width: none;
+  }
+  .platter-wrap {
+    grid-column: 1/-1;
+  }
+  .platter {
+    border: 1px solid color-mix(in srgb,var(--accent) 35%,transparent);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: color-mix(in srgb,var(--accent) 5%,transparent);
+  }
+
+  @media(min-width:640px) {
+    .platter {
+      padding: 1.5rem 1.75rem;
+    }
+  }
+  .platter-tag {
+    display: inline-block;
+    font-size: .52rem;
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    background: var(--accent);
+    color: #fff;
+    padding: .12rem .5rem;
+    border-radius: 99px;
+    margin-left: .5rem;
+    vertical-align: middle;
+    font-weight: 600;
+    font-family: 'Inter',sans-serif;
+    font-variant: normal;
+  }
+  .combo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media(min-width:640px) {
+    .combo-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+  .combo-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: var(--cream);
+  }
+
+  @media(min-width:640px) {
+    .combo-card {
+      padding: 1.5rem 1.75rem;
+    }
+  }
+  .combo-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: .5rem;
+  }
+  .combo-name {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    font-variant: small-caps;
+    letter-spacing: .06em;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .combo-leader {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    margin: 0 .65rem;
+    min-width: 10px;
+  }
+  .combo-cost {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .combo-detail {
+    font-size: .78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .drink-group {
+    margin-bottom: 2.25rem;
+  }
+  .drink-group:last-child {
+    margin-bottom: 0;
+  }
+  .drink-group-label {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    padding-bottom: .45rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .closing {
+    background: var(--ink);
+    padding: 3rem 1.25rem;
+    text-align: center;
+    color: #fff;
+  }
+
+  @media(min-width:768px) {
+    .closing {
+      padding: 3.5rem 2rem;
+    }
+  }
+  .closing .eyebrow {
+    font-family: 'Dancing Script',cursive;
+    font-size: 1.5rem;
+    color: var(--accent);
+    display: block;
+    margin-bottom: .3rem;
+  }
+  .closing h3 {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: clamp(1.8rem,5vw,2.5rem);
+    font-weight: 300;
+    margin-bottom: .65rem;
+  }
+  .closing p {
+    color: rgba(255,255,255,.65);
+    font-size: .83rem;
+    margin-bottom: 1.5rem;
+  }
+  .closing-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand);
+    color: #fff;
+    padding: .85rem 1.75rem;
+    border-radius: 3px;
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    text-decoration: none;
+    transition: all .2s;
+    cursor: pointer;
+    border: none;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    opacity: .88;
+    box-shadow: 0 10px 24px -8px var(--brand);
+  }
+  .action-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.3);
+  }
+  .action-outline:hover {
+    background: rgba(255,255,255,.06);
+    box-shadow: none;
+  }
+  footer {
+    background: rgba(87,107,56,.82);
+    color: rgba(255,255,255,.85);
+    padding: 2rem 1.25rem 2.5rem;
+    text-align: center;
+    font-size: .78rem;
+  }
+  footer .footer-brand {
+    font-family: 'Cormorant Garamond',serif;
+    font-size: 1.7rem;
+    color: #fff;
+    margin-bottom: .3rem;
+    cursor: pointer;
+  }
+  footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  footer .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: .75rem 0 1.25rem;
+    flex-wrap: wrap;
+  }
+  footer .footer-nav a {
+    font-size: .6rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: rgba(255,255,255,.42);
+    transition: color .2s;
+    cursor: pointer;
+  }
+  footer .footer-nav a:hover {
+    color: var(--accent);
+  }
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .main-nav a,
+  .footer-nav a,
+  .full-menu-link,
+  .carousel-dot {
+    touch-action: manipulation;
+  }
+
+  @media(max-width:360px) {
+    nav {
+      padding: 0 .85rem;
+    }
+    .brand-mark {
+      height: 28px;
+    }
+    .icon-button {
+      padding: .4rem .4rem;
+      min-width: 40px;
+    }
+    .order-button {
+      padding: .45rem .7rem !important;
+      letter-spacing: .12em;
+    }
+    .closing-actions .btn,
+    .catering-inner .action {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media(max-width:420px) {
+    .hero-actions {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .action {
+      padding: .75rem 1.25rem;
+    }
+  }
+
+  @media(max-width:420px) {
+    footer + div,
+    .page > div:last-child {
+      flex-wrap: wrap;
+      line-height: 1.5;
+    }
+  }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div class="brand" onclick="openSection('home')" aria-label="The Olive Branch - Home">
+    <img src="images/logo.png" alt="The Olive Branch" class="brand-mark">
+  </div>
+  <ul class="main-nav">
+    <li class="full-nav-item"><a onclick="openSection('home')" id="homeLink" class="active">Home</a></li>
+    <li class="full-nav-item"><a onclick="openSection('menu')" id="menuLink">Menu</a></li>
+    <li class="compact-nav-item"><a onclick="openSection('home')" id="homeLinkCompact" class="icon-button" aria-label="Home"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a></li>
+    <li><a href="https://the-olive-branch-restaur-ypsilanti.cloveronline.com/" target="_blank" rel="noopener" class="order-button">Order Now</a></li>
+  </ul>
+</nav>
+
+<div id="view-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-backdrop">
+      <div class="hero-backdrop-pan"></div>
+      <video class="hero-video" autoplay muted loop playsinline poster="images/hero.jpg">
+        <source src="videos/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-shade"></div>
+    <div class="hero-inner">
+      <img src="images/logo-2.png" alt="The Olive Branch" class="hero-emblem">
+      <div class="hero-greeting">Welcome to</div>
+      <h1 style="font-family:'Cormorant Garamond',serif">Olive Branch</h1>
+      <div class="hero-flourish"><span class="line"></span><span class="hero-subtitle">Authentic Middle Eastern Cuisine</span><span class="line"></span></div>
+      <p class="hero-lead">Generations of family recipes brought to your table. Bold spice, slow-roasted shawarma, and the warmth of true hospitality.</p>
+      <div class="hero-actions">
+        <button class="action" onclick="openSection('menu')">View Our Menu</button>
+        <a href="https://the-olive-branch-restaur-ypsilanti.cloveronline.com/" target="_blank" rel="noopener" class="action">Order Now</a>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <section class="menu-preview" id="preview">
+    <div class="container">
+      <div class="block-heading">
+        <span class="block-kicker">Explore</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:400">Our Menu</h2>
+        <div class="divider"><span class="line"></span><span class="ornament">❦</span><span class="line"></span></div>
+      </div>
+      <div class="category-grid">
+        <div class="category-tile" onclick="openSection('menu','appetizers')"><img src='images/appetizers.jpg' alt="Appetizers"/><div class="tile-shade"></div><div class="tile-caption">Appetizers</div></div>
+        <div class="category-tile" onclick="openSection('menu','plates')"><img src='images/plates.jpg' alt="Plates"/><div class="tile-shade"></div><div class="tile-caption">Plates</div></div>
+        <div class="category-tile" onclick="openSection('menu','sandwiches')"><img src='images/sandwiches.jpg' alt="Sandwiches"/><div class="tile-shade"></div><div class="tile-caption">Sandwiches</div></div>
+        <div class="category-tile" onclick="openSection('menu','breakfast')"><img src='images/breakfast.jpg' alt="Breakfast"/><div class="tile-shade"></div><div class="tile-caption">Breakfast</div></div>
+        <div class="category-tile" onclick="openSection('menu','salad')"><img src='images/salads.jpg' alt="Salads"/><div class="tile-shade"></div><div class="tile-caption">Salads</div></div>
+        <div class="category-tile" onclick="openSection('menu','drinks')"><img src='images/drinks.jpg' alt="Drinks" style='object-position:center center'/><div class="tile-shade"></div><div class="tile-caption">Drinks</div></div>
+        <div class="category-tile" onclick="openSection('menu','desserts')"><img src='images/desserts.jpg' alt="Desserts"/><div class="tile-shade"></div><div class="tile-caption">Desserts</div></div>
+        <div class="category-tile" onclick="openSection('menu','burgers')"><img src='images/burgers.jpg' alt='Burgers'/><div class="tile-shade" style="background:linear-gradient(to top,rgba(29,34,38,.85) 0%,rgba(29,34,38,.1) 60%,transparent 100%)"></div><div class="tile-caption">Burgers</div></div>
+        
+      </div>
+      <div class="centered spaced-top"><button class="action" onclick="openSection('menu')">View Full Menu</button></div>
+    </div>
+  </section>
+
+  <section class="specialties">
+    <div class="container">
+      <h2 class="specialties-heading">Signature <span class="italic">Specialties</span></h2>
+      <div class="specialty-grid">
+        <article class="specialty"><div class="specialty-photo"><img src='images/chicken-shawarma-plate.jpg' alt="Chicken Shawarma Plate"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">Chicken Shawarma Plate</h3><span class="specialty-price">$15.99</span></div><p class="specialty-note">Slow-roasted, spiced, and served with rice or mujadara, garlic sauce, and fresh salad.</p></div></article>
+        <article class="specialty"><div class="specialty-photo"><img src='images/new-orleans-burger.jpg' alt="New Orleans Burger"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">New Orleans Burger</h3><span class="specialty-price">$11.99</span></div><p class="specialty-note">Fresh burger meat with barbecue sauce on fresh dough, served with seasoned fries.</p></div></article>
+        <article class="specialty"><div class="specialty-photo"><img src='images/olive-branch-cocktail.jpg' alt="Olive Branch Cocktail"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">Olive Branch Cocktail</h3><span class="specialty-price">$10.99</span></div><p class="specialty-note">Keshta arabic, almond, pistachio, fresh strawberry, fresh banana &amp; milk. Our signature specialty drink.</p></div></article>
+      </div>
+      <div class="centered spaced-top"><button class="full-menu-link" onclick="openSection('menu')">See the full menu</button></div>
+    </div>
+  </section>
+
+  <div style="height:5px;background:linear-gradient(to right,var(--brand),var(--olive),var(--brand))"></div>
+  <!-- weekend breakfast background -->
+  <section class="weekend-special" style="background-image:url('images/weekend-breakfast.jpg')">
+    <div class="weekend-shade"></div>
+    <div class="weekend-inner">
+      <div class="weekend-panel" id="weekendPanel">
+        <h3 class="weekend-heading">Weekend Only Breakfast Special</h3>
+        <div class="divider" style="margin-bottom:1.5rem"><span class="line"></span><span class="ornament">❦</span><span class="line"></span></div>
+        <div class="option-tag" id="optionTag">Option 1 of 2</div>
+        <p class="weekend-name" id="weekend-name">Breakfast for 2 <span class="accent">· $25.99</span></p>
+        <p class="weekend-note" id="weekend-note">A shared Middle Eastern breakfast plate with falafel, cheese arayes, eggs, hummus, labneh, chicken liver, olives, pita bread & tea or coffee.</p>
+        <div class="carousel-dots" id="carousel-dots">
+          <button class="carousel-dot active" onclick="showWeekendSlide(0)"></button>
+          <button class="carousel-dot" onclick="showWeekendSlide(1)"></button>
+        </div>
+        <button class="carousel-arrow arrow-prev" onclick="rewindWeekend()" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="carousel-arrow arrow-next" onclick="advanceWeekend()" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- catering background -->
+  <section class="catering" style="background-image:url('images/catering-bg.jpg')">
+    <div class="catering-shade"></div>
+    <div class="catering-inner">
+      <span class="catering-kicker">Special Events</span>
+      <h2 class="catering-heading" style="font-family:'Cormorant Garamond',serif">We Cater</h2>
+      <p class="catering-lead">Please speak to management about our catering services and pricing.</p>
+      <a href="tel:+17349617452" class="action">Call (734) 961-7452</a>
+    </div>
+  </section>
+
+  <section class="visit">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="visit-card"><a href="https://maps.google.com/?q=2269+Ellsworth+Rd,+Ypsilanti,+MI+48197" target="_blank"><span class="visit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span class="visit-title" style="font-family:'Cormorant Garamond',serif">Find Us</span><span class="visit-line">2269 Ellsworth Rd, Ypsilanti, MI 48197</span></a></div>
+        <div class="visit-card"><a href="tel:+17349617452"><span class="visit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41a2 2 0 0 1 1.99-2.18H6.6a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.07 6.07l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="visit-title" style="font-family:'Cormorant Garamond',serif">Call Us</span><span class="visit-line">(734) 961-7452</span></a></div>
+        <div class="visit-card"><span class="visit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="visit-title" style="font-family:'Cormorant Garamond',serif">Hours</span><span class="visit-line">Mon–Thu: 10am – 10pm</span><span class="visit-line">Fri–Sat: 10am – 12am</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand" onclick="openSection('home')">Olive Branch</div>
+    <p>2269 Ellsworth Rd, Ypsilanti, MI 48197</p>
+    <div class="footer-nav">
+      <a onclick="openSection('home')">Home</a>
+      <a onclick="openSection('menu')">Menu</a>
+      <a href="tel:+17349617452">(734) 961-7452</a>
+      <a href="https://maps.google.com/?q=2269+Ellsworth+Rd,+Ypsilanti,+MI+48197" target="_blank">Directions</a>
+    </div>
+    <p style="margin-top:1.25rem;font-size:.68rem;opacity:.35">&copy; 2025 Olive Branch. All rights reserved.</p>
+  </footer><div style="background:rgba(20,20,20,.92);color:rgba(255,255,255,.55);text-align:center;padding:.55rem 1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.5rem"><img src="images/freshworkfactory-logo.jpg" alt="FreshWorkFactory" style="height:26px;width:auto;vertical-align:middle;border-radius:50%"> Website Design By <a href="https://freshworkfactory.com" target="_blank" style="color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.12em">FreshWorkFactory.com</a></div>
+</div>
+
+<div id="view-menu" class="page">
+
+  <div class="menu-banner">
+    <div class="menu-banner-shade"></div>
+    <div class="menu-banner-inner">
+      <span class="eyebrow">Explore</span>
+      <h1>Our Menu</h1>
+      <div class="menu-banner-flourish"><span class="line"></span><span>Authentic Middle Eastern · Ypsilanti, MI</span><span class="line"></span></div>
+    </div>
+  </div>
+
+  <div class="category-bar">
+    <div class="category-bar-track" id="category-bar-track">
+      <button class="category-link active" data-target="appetizers">Appetizers</button>
+      <button class="category-link" data-target="salad">Salads</button>
+      <button class="category-link" data-target="plates">Plates</button>
+      <button class="category-link" data-target="sandwiches">Sandwiches</button>
+      <button class="category-link" data-target="deluxe">Deluxe Shawarma</button>
+      <button class="category-link" data-target="veggie">Veggie</button>
+      <button class="category-link" data-target="burgers">Burgers</button>
+      <button class="category-link" data-target="loaded-fries">Loaded Fries</button>
+      <button class="category-link" data-target="bowls">Bowls</button>
+      <button class="category-link" data-target="breakfast">Breakfast</button>
+      <button class="category-link" data-target="weekend-breakfast">Weekend Breakfast</button>
+      <button class="category-link" data-target="drinks">Drinks</button>
+      <button class="category-link" data-target="desserts">Desserts</button>
+      <button class="category-link" data-target="sides">Sides</button>
+    </div>
+  </div>
+
+  <section class="menu-group" id="appetizers">
+    <div class="section-banner"><img src='images/appetizers.jpg' alt="Appetizers"/><div class="section-banner-caption"><span>Appetizers</span></div></div>
+    <div class="menu-group-body"><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fattah Hummus</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Creamy hummus mixed with pita and yogurt.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Arayes</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div><p class="dish-detail">Grilled bread stuffed with spiced meat and toasted to perfection.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Arayes &amp; Thyme</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div><p class="dish-detail">Grilled bread stuffed with melted cheese &amp; fragrant thyme.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel (8 pc)</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Kibbeh (4 pc)</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Cheese Rolls (4 pc)</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grape Leaves (8 pc)</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Lentil Soup</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Seasoned Fries</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Cauliflower</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Eggplant</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Olives</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Hummus</span><span class="dish-leader"></span><span class="dish-cost">$6.49</span></div><p class="dish-detail">Add meat or chicken with nuts +$3.99</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Baba Ganoush</span><span class="dish-leader"></span><span class="dish-cost">$6.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Foul (Fava Beans)</span><span class="dish-leader"></span><span class="dish-cost">$6.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Patata Harra</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Qalayat Bandoura</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div><p class="dish-detail">Add Meat +$3.99</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Musakhan Rolls</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Tenders (4 pc)</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Nuggets</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Quesadilla</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Quesadilla</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mujadara</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div><p class="dish-detail">Brown lentils, bulgur shells &amp; fried onions.</p></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="salad">
+    <div class="section-banner"><img src='images/salads.jpg' alt="Salad"/><div class="section-banner-caption"><span>Salad</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Add Grilled Chicken, Shawarma Chicken or Zinger (Tender Chicken) +$3.99</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fattoush</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tabbouleh</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Greek Salad</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tahini Salad</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="plates">
+    <div class="section-banner"><img src='images/plates-2.jpg' alt="Plates"/><div class="section-banner-caption"><span>Plates</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Served with salad &amp; your choice of rice or mujadara, garlic sauce, tahini, &amp; special sauce.</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$15.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$17.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kofta Plate (3 skewers)</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Plate</span><span class="dish-leader"></span><span class="dish-cost">$14.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Kabob (3)</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Tawook Plate (3)</span><span class="dish-leader"></span><span class="dish-cost">$17.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kufta Tahini Plate (3)</span><span class="dish-leader"></span><span class="dish-cost">$18.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kufta Banadora</span><span class="dish-leader"></span><span class="dish-cost">$18.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Crispy Chicken Plate</span><span class="dish-leader"></span><span class="dish-cost">$15.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Plate for 2</span><span class="dish-leader"></span><span class="dish-cost">$39.99</span></div><p class="dish-detail">2 meat kabab, 2 kofta, 2 shish tawook.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Grill Plate</span><span class="dish-leader"></span><span class="dish-cost">$20.99</span></div><p class="dish-detail">Meat kabab, kofta, shish tawook, rice.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grilled Chicken Plate</span><span class="dish-leader"></span><span class="dish-cost">$14.99</span></div><p class="dish-detail">Also served with vegetables.</p></div>
+      <div class="platter-wrap"><div class="platter"><div class="dish-row"><span class="dish-title">Family Platter<span class="platter-tag">Serves 6–8</span></span><span class="dish-leader"></span><span class="dish-cost">$149.99</span></div><p class="dish-detail">4 beef kabob, 4 kufta, 4 shish tawook, 1 lb chicken, 1 lb meat shawarma, grilled onions, grilled tomatoes, hummus &amp; fries.</p></div></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="sandwiches">
+    <div class="section-banner"><img src='images/sandwiches-2.jpg' alt="Sandwiches"/><div class="section-banner-caption"><span>Sandwiches</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Make It a Combo: Fries + Drink (Cola, Sprite) +$3.99</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Zinger</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Tender chicken, garlic, special sauce, tomatoes &amp; lettuce.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Spicy Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Spicy sauce, cheese, pomegranate sauce &amp; garlic.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Spicy</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$11.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kofta Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Kabob Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="deluxe">
+    <div class="section-banner"><img src='images/sandwiches.jpg' alt="Deluxe Shawarma"/><div class="section-banner-caption"><span>Deluxe Shawarma</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">All sandwiches fully stuffed with cabbage, lettuce, hummus, garlic sauce, pickles &amp; pomegranate molasses. Combo: Fries + Drink +$3.99</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Deluxe Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Deluxe Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Deluxe Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$13.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Deluxe</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="veggie">
+    <div class="section-banner"><img src='images/veggie-sandwiches.jpg' alt="Veggie Sandwiches"/><div class="section-banner-caption"><span>Veggie Sandwiches</span></div></div>
+    <div class="menu-group-body"><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grape Leaves Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fries Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div><p class="dish-detail">Add Tabouli +$2.99</p></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="burgers">
+    <div class="section-banner"><img src='images/burgers.jpg' alt="Burgers"/><div class="section-banner-caption"><span>Burgers</span></div></div>
+    <div class="menu-group-body"><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">New Orleans Burger</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div><p class="dish-detail">Fresh burger meat with barbecue sauce on fresh dough, served with seasoned fries.</p></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="loaded-fries">
+    <div class="section-banner"><img src='images/loaded-fries.jpg' alt="Loaded Fries"/><div class="section-banner-caption"><span>Loaded Fries</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Meat, chicken, ketchup, mayo, special sauce, white sauce, parmesan &amp; cheddar cheese.</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Loaded Fries</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Loaded Fries</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Loaded Fries</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="bowls">
+    <div class="section-banner"><img src='images/bowls.jpg' alt="Bowls"/><div class="section-banner-caption"><span>Bowls</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Served with your choice of rice or mujadara, tomatoes, pickles, onions, garlic sauce, special sauce &amp; tahini sauce.</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Shawarma Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="breakfast">
+    <div class="section-banner"><img src='images/breakfast-2.jpg' alt="Breakfast"/><div class="section-banner-caption"><span>Breakfast</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">We serve breakfast daily.</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Eggs</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Liver</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Arayes</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Arayes</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Spicy Potatoes</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Cauliflower</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Eggplant</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Halloumi Cheese</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Labneh</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Labneh Jerashiya</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Pancakes</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Cheese &amp; Turkey</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Cheese</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Zait &amp; Zaatar</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Eggs With Hashbrowns</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div><p class="dish-detail">All eggs cooked on fresh dough.</p></div>
+      <div class="dish dish-wide"><div class="dish-row"><span class="dish-title">Shakshuka</span><span class="dish-leader"></span><span class="dish-cost">Sm $8.99 / Lg $14.99</span></div><p class="dish-detail">Poached eggs in a rich spicy tomato sauce, served with bread. Add Cheese +$1.49</p></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="weekend-breakfast">
+    <div class="section-banner"><img src='images/weekend-breakfast.jpg' alt="Weekend Breakfast" style='object-position:center 40%'/><div class="section-banner-caption"><span>Weekend Breakfast</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Saturday &amp; Sunday only.</p>
+    <div class="combo-grid">
+      <div class="combo-card"><div class="combo-row"><span class="combo-name">Breakfast for 2</span><span class="combo-leader"></span><span class="combo-cost">$25.99</span></div><p class="combo-detail">Falafel, cheese arayes, eggs, hummus, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil &amp; zaatar, pita bread, pickles, vegetables, tea or coffee.</p></div>
+      <div class="combo-card"><div class="combo-row"><span class="combo-name">Breakfast for 4</span><span class="combo-leader"></span><span class="combo-cost">$45.99</span></div><p class="combo-detail">Falafel, cheese arayes, eggs, hummus, baba ghanoush, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil &amp; zaatar, pita bread, pickles, vegetables, tea or coffee.</p></div>
+    </div>
+  </div></section><div class="section-rule"></div>
+
+  <section class="menu-group" id="drinks"><div class="section-banner"><img src='images/drinks.jpg' alt="Drinks" style='object-position:center center'/><div class="section-banner-caption"><span>Drinks</span></div></div><div class="menu-group-body">
+      <div class="drink-group"><div class="drink-group-label">Fresh Juices &amp; Smoothies</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Orange Juice</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Lemon &amp; Mint</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mango Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Strawberry Banana Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Berry Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+    </div></div>
+      <div class="drink-group"><div class="drink-group-label">Hilwas</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Lemonade</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Orange Lemonade</span><span class="dish-leader"></span><span class="dish-cost">$4.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Strawberry Lemonade</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mango Juice</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+    </div></div>
+      <div class="drink-group"><div class="drink-group-label">Olive Branch Tea &amp; Coffee</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cup of Tea</span><span class="dish-leader"></span><span class="dish-cost">$2.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tea Pot for 3</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tea Pot for 6</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">American Coffee</span><span class="dish-leader"></span><span class="dish-cost">$3.49</span></div></div>
+    </div></div>
+      <div class="drink-group"><div class="drink-group-label">Olive Branch Cocktail</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Olive Branch Cocktail</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Keshta arabic, almond, pistachio, fresh strawberry, fresh banana &amp; milk.</p></div>
+    </div></div>
+      <div class="drink-group"><div class="drink-group-label">Beverages</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Coke / Sprite</span><span class="dish-leader"></span><span class="dish-cost">$2.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Energy Drink</span><span class="dish-leader"></span><span class="dish-cost">$4.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Palestinian Drink</span><span class="dish-leader"></span><span class="dish-cost">$3.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Yogurt Drink</span><span class="dish-leader"></span><span class="dish-cost">$3.99</span></div></div>
+    </div></div>
+  </div></section><div class="section-rule"></div>
+
+  <section class="menu-group" id="desserts">
+    <div class="section-banner"><img src='images/desserts-2.jpg' alt="Desserts"/><div class="section-banner-caption"><span>Desserts</span></div></div>
+    <div class="menu-group-body"><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Baklava</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kunafa</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+    </div>
+  </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="sides">
+    <div class="section-banner"><img src='images/sides.jpg' alt="Sides"/><div class="section-banner-caption"><span>Extra Side of Sauce</span></div></div>
+    <div class="menu-group-body"><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Garlic Sauce</span><span class="dish-leader"></span><span class="dish-cost">$1.20</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Special Sauce</span><span class="dish-leader"></span><span class="dish-cost">$1.20</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Side of Pita</span><span class="dish-leader"></span><span class="dish-cost">$1.20</span></div></div>
+    </div>
+  </div>
+  </section>
+
+  <div class="closing">
+    <span class="eyebrow">Ready to order?</span>
+    <h3>Give Us a Call</h3>
+    <p>Dine in, take out, or plan a catering event — we'd love to serve you.</p>
+    <div class="closing-actions">
+      <a href="tel:+17349617452" class="btn">(734) 961-7452</a>
+      <a href="https://maps.google.com/?q=2269+Ellsworth+Rd,+Ypsilanti,+MI+48197" target="_blank" class="btn action-outline">Get Directions</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand" onclick="openSection('home')">Olive Branch</div>
+    <p>2269 Ellsworth Rd, Ypsilanti, MI 48197</p>
+    <div class="footer-nav">
+      <a onclick="openSection('home')">Home</a>
+      <a onclick="openSection('menu')">Menu</a>
+      <a href="tel:+17349617452">(734) 961-7452</a>
+      <a href="https://maps.google.com/?q=2269+Ellsworth+Rd,+Ypsilanti,+MI+48197" target="_blank">Directions</a>
+    </div>
+    <p style="margin-top:1.25rem;font-size:.68rem;opacity:.35">&copy; 2025 Olive Branch. All rights reserved.</p>
+  </footer><div style="background:rgba(20,20,20,.92);color:rgba(255,255,255,.55);text-align:center;padding:.55rem 1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.5rem"><img src="images/freshworkfactory-logo.jpg" alt="FreshWorkFactory" style="height:26px;width:auto;vertical-align:middle;border-radius:50%"> Website Design By <a href="https://freshworkfactory.com" target="_blank" style="color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.12em">FreshWorkFactory.com</a></div>
+
+</div>
+
+<script>
+  const weekendSlides = [
+    {
+      name: "Breakfast for 2",
+      price: "$25.99",
+      desc: "A shared Middle Eastern breakfast plate with falafel, cheese arayes, eggs, hummus, labneh, chicken liver, olives, pita bread & tea or coffee."
+    },
+    {
+      name: "Breakfast for 4",
+      price: "$45.99",
+      desc: "A large family-style breakfast plate with falafel, cheese arayes, eggs, hummus, baba ghanoush, labneh, chicken liver, olives, pita bread & tea or coffee."
+    }
+  ];
+
+  let currentSlide = 0;
+  let slideTimer = setInterval(advanceWeekend, 6000);
+
+  function drawWeekendSlide() {
+    const slide = weekendSlides[currentSlide];
+    document.getElementById('weekend-name').innerHTML = slide.name + ' <span class="accent">· ' + slide.price + '</span>';
+    document.getElementById('weekend-note').textContent = slide.desc;
+
+    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+
+    const tag = document.getElementById('optionTag');
+    if (tag) {
+      tag.textContent = 'Option ' + (currentSlide + 1) + ' of ' + weekendSlides.length;
+    }
+  }
+
+  function showWeekendSlide(index) {
+    currentSlide = index;
+    clearInterval(slideTimer);
+    slideTimer = setInterval(advanceWeekend, 6000);
+    drawWeekendSlide();
+  }
+
+  function advanceWeekend() {
+    showWeekendSlide((currentSlide + 1) % weekendSlides.length);
+  }
+
+  function rewindWeekend() {
+    showWeekendSlide((currentSlide - 1 + weekendSlides.length) % weekendSlides.length);
+  }
+
+  function openSection(name, anchor) {
+    document.querySelectorAll('.page').forEach(panel => panel.classList.remove('active'));
+    document.getElementById('view-' + name).classList.add('active');
+
+    document.getElementById('homeLink').classList.toggle('active', name === 'home');
+    document.getElementById('menuLink').classList.toggle('active', name === 'menu');
+
+    const compactHome = document.getElementById('homeLinkCompact');
+    if (compactHome) {
+      compactHome.classList.toggle('active', name === 'home');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    if (anchor) {
+      setTimeout(() => {
+        const target = document.getElementById(anchor);
+        if (target) {
+          const headerOffset = 68 + 42;
+          window.scrollTo({
+            top: target.getBoundingClientRect().top + window.scrollY - headerOffset,
+            behavior: 'smooth'
+          });
+        }
+      }, 50);
+    }
+  }
+
+  const menuGroups = document.querySelectorAll('#view-menu .menu-group');
+  const categoryLinks = document.querySelectorAll('.category-link');
+  const categoryTrack = document.querySelector('.category-bar-track');
+  const headerOffset = 68 + 42;
+
+  function currentGroup() {
+    let activeId = menuGroups[0] ? menuGroups[0].id : null;
+    menuGroups.forEach(group => {
+      if (group.getBoundingClientRect().top <= headerOffset + 40) {
+        activeId = group.id;
+      }
+    });
+    return activeId;
+  }
+
+  function markActiveCategory(id) {
+    categoryLinks.forEach(link => link.classList.toggle('active', link.dataset.target === id));
+
+    const activeLink = document.querySelector('.category-link[data-target="' + id + '"]');
+    if (activeLink && categoryTrack) {
+      const left = activeLink.offsetLeft - (categoryTrack.clientWidth / 2) + (activeLink.clientWidth / 2);
+      categoryTrack.scrollTo({ left: left, behavior: 'smooth' });
+    }
+  }
+
+  let scrollQueued = false;
+  window.addEventListener('scroll', () => {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => {
+      if (document.getElementById('view-menu').classList.contains('active')) {
+        markActiveCategory(currentGroup());
+      }
+      scrollQueued = false;
+    });
+  }, { passive: true });
+
+  categoryLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const target = document.getElementById(link.dataset.target);
+      if (target) {
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - headerOffset,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
