@@ -293,7 +293,7 @@
   .hero-actions {
     display: grid;
     grid-template-columns: repeat(2,minmax(0,1fr));
-    width: min(100%,330px);
+    width: min(100%,360px);
     margin: 2rem auto 0;
     gap: .75rem;
   }
@@ -309,14 +309,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
-    padding: .8rem 1.4rem;
+    height: 46px;
+    min-height: 46px;
+    padding: .8rem .85rem;
     border: 0;
     border-radius: 4px;
     background: var(--brand);
     color: #fff;
+    font-family: 'Inter',sans-serif;
     font-size: .65rem;
     font-weight: 600;
+    line-height: 1;
     letter-spacing: .18em;
     text-decoration: none;
     text-transform: uppercase;
@@ -348,11 +351,6 @@
   .action:active {
     transform: translateY(1px) scale(.975);
     box-shadow: 0 5px 12px -8px rgba(0,0,0,.72);
-  }
-  .action.button-pop,
-  .btn.button-pop,
-  .order-button.button-pop {
-    animation: button-pop .34s ease;
   }
   .scroll-cue {
     position: absolute;
@@ -1336,54 +1334,25 @@
   }
 
 
-  /* Desktop dove pointer. Touch devices keep their normal behavior. */
-  .dove-pointer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2147483647;
-    width: 38px;
-    height: 38px;
-    pointer-events: none;
-    opacity: 0;
-    will-change: transform;
-    transform: translate3d(-100px,-100px,0);
-    transform-origin: 5px 5px;
-    filter: drop-shadow(0 3px 5px rgba(0,0,0,.38));
-    transition: opacity .12s ease, filter .16s ease;
-  }
-  .dove-pointer.visible {
-    opacity: 1;
-  }
-  .dove-pointer.hovering {
-    filter: drop-shadow(0 5px 8px rgba(198,147,58,.55));
-  }
-
-  @keyframes button-pop {
-    0% { transform: scale(1); }
-    42% { transform: translateY(1px) scale(.955); }
-    100% { transform: scale(1); }
-  }
 
   @media (hover: hover) and (pointer: fine) {
-    html.dove-cursor,
-    html.dove-cursor body,
-    html.dove-cursor body * {
-      cursor: none !important;
+    html,
+    body,
+    body * {
+      cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADYElEQVR42u2WX0hbVxzHv+fe/JllcdnCqmJAymBjUmhDrLWkIpNmQ8n6tBiXIqkIy150boU+tI0+tG/t2KNjewmuhU0YlNXGKRLTwKhYHywDu6Aw23W61Aa3mvnn3tzz3cNuIC97mKl7WT5wH+45h/v9fX/nnt/vABUqVKhQocL/HLXcDwjz+dfCJBUhxL46E/8krChK8d0nynBOAC6Xy6Xlcrl8cYIkrFYrpZSQUhbXKSShqqqUUgLAqb6+vku6rreVu3fvARgwU2kpmT8BoKq4tsSxPxwOz0xPT3NhYYHt7e1flxtAR01NzQqAqkgk8gIAm/9t/5fx0Th7Ij1JAAdN8cZQdyiVTCZpshuPx7fsdnvfngMwXfsuX7nM+vr6HgBwOp2Bq59e5dbW1p/35u/RarW+73Q6G0ZGRp6YwjpJfXV1lb29vb+73e6qPQegqioAnJr8fpKxWOyPurq6gZYTLeu5XM4guZu4nTAAvBM+E75edK3rOknq8/Pzhs/n+wqAdc/Hj6QC4NVoNPoTSd787iY7OjvY1dXFfD4v19bWeMRz5MHo6GjBMAypaRr1gi43Njb02FCMAF43TeyNYDCoKooCh8PxTSKRIMnd8fFx6ff7mc1mSZKPf33Mp+tPKaUkSeY388at27fY+lbrNSEExsbGyipEKkkBwBsKhXa2t7c1kvLCxQucm5srihrFv25paanQfaZbP3n65DUARfHyKlExCy6X69sb128wl8vpgx8NaqlUypBSUkpJc9/l7OysBPAEAIRFoLGx0QZAKSsFi4uLGBoaUiYmJmbuzt5t0qi9JinVne0dUXuwtuCodgiLxQIAwu12s9pRfeD+zP1AbaF2I7Oe+dEsUuVTUtMDDd6GDz0eT3oqOcWHPz9k9rcsN59tauYRLKR/SNN32Cc9Ns8XTVVNp59XNxAkoSgKSQJvwHH88PFzzW82f6BK1dbp73QJCtgtdrT6Wo1Hq4+YTqUtg/2Dnz33JuT1ekvPtgXAK8fePXbuUPOhj89+cnbyTvoOSe4uLy9rVrv1yn51QxEMBlVVUaEIpXT85fMXzz9jgVomk6HNZru03xcOAUC0tbVZAoHAgeHhYeVo09HPV35ZYXQg+gDAS//d3Sf4dwNr8bVE+of7pwC8SFL8Bb8LwKbhRAPxAAAAAElFTkSuQmCC") 4 4, auto !important;
+    }
+
+    a,
+    button,
+    [onclick],
+    .category-tile {
+      cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADYElEQVR42u2WX0hbVxzHv+fe/JllcdnCqmJAymBjUmhDrLWkIpNmQ8n6tBiXIqkIy150boU+tI0+tG/t2KNjewmuhU0YlNXGKRLTwKhYHywDu6Aw23W61Aa3mvnn3tzz3cNuIC97mKl7WT5wH+45h/v9fX/nnt/vABUqVKhQocL/HLXcDwjz+dfCJBUhxL46E/8krChK8d0nynBOAC6Xy6Xlcrl8cYIkrFYrpZSQUhbXKSShqqqUUgLAqb6+vku6rreVu3fvARgwU2kpmT8BoKq4tsSxPxwOz0xPT3NhYYHt7e1flxtAR01NzQqAqkgk8gIAm/9t/5fx0Th7Ij1JAAdN8cZQdyiVTCZpshuPx7fsdnvfngMwXfsuX7nM+vr6HgBwOp2Bq59e5dbW1p/35u/RarW+73Q6G0ZGRp6YwjpJfXV1lb29vb+73e6qPQegqioAnJr8fpKxWOyPurq6gZYTLeu5XM4guZu4nTAAvBM+E75edK3rOknq8/Pzhs/n+wqAdc/Hj6QC4NVoNPoTSd787iY7OjvY1dXFfD4v19bWeMRz5MHo6GjBMAypaRr1gi43Njb02FCMAF43TeyNYDCoKooCh8PxTSKRIMnd8fFx6ff7mc1mSZKPf33Mp+tPKaUkSeY388at27fY+lbrNSEExsbGyipEKkkBwBsKhXa2t7c1kvLCxQucm5srihrFv25paanQfaZbP3n65DUARfHyKlExCy6X69sb128wl8vpgx8NaqlUypBSUkpJc9/l7OysBPAEAIRFoLGx0QZAKSsFi4uLGBoaUiYmJmbuzt5t0qi9JinVne0dUXuwtuCodgiLxQIAwu12s9pRfeD+zP1AbaF2I7Oe+dEsUuVTUtMDDd6GDz0eT3oqOcWHPz9k9rcsN59tauYRLKR/SNN32Cc9Ns8XTVVNp59XNxAkoSgKSQJvwHH88PFzzW82f6BK1dbp73QJCtgtdrT6Wo1Hq4+YTqUtg/2Dnz33JuT1ekvPtgXAK8fePXbuUPOhj89+cnbyTvoOSe4uLy9rVrv1yn51QxEMBlVVUaEIpXT85fMXzz9jgVomk6HNZru03xcOAUC0tbVZAoHAgeHhYeVo09HPV35ZYXQg+gDAS//d3Sf4dwNr8bVE+of7pwC8SFL8Bb8LwKbhRAPxAAAAAElFTkSuQmCC") 4 4, pointer !important;
     }
   }
-
-  @media (hover: none), (pointer: coarse) {
-    .dove-pointer {
-      display: none;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .brand-mark,
     .action,
-    .action::before,
-    .dove-pointer {
+    .action::before {
       animation: none !important;
       transition: none !important;
     }

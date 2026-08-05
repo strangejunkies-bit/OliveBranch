@@ -121,49 +121,9 @@
     });
   });
 
-  document.addEventListener('click', event => {
-    const button = event.target.closest('.action, .btn, .order-button');
-    if (!button) return;
-    button.classList.remove('button-pop');
-    void button.offsetWidth;
-    button.classList.add('button-pop');
-    setTimeout(() => button.classList.remove('button-pop'), 360);
+  Object.assign(window, {
+    openSection,
+    showWeekendSlide,
+    advanceWeekend,
+    rewindWeekend
   });
-
-  function initDovePointer() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-    const pointer = document.createElement('img');
-    pointer.className = 'dove-pointer';
-    pointer.src = 'cursor/dove.png';
-    pointer.alt = '';
-    pointer.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(pointer);
-    document.documentElement.classList.add('dove-cursor');
-
-    let x = -100;
-    let y = -100;
-    let frame = 0;
-
-    const paint = () => {
-      pointer.style.transform = `translate3d(${x - 4}px,${y - 4}px,0)`;
-      frame = 0;
-    };
-
-    document.addEventListener('pointermove', event => {
-      x = event.clientX;
-      y = event.clientY;
-      pointer.classList.add('visible');
-      if (!frame) frame = requestAnimationFrame(paint);
-    }, { passive: true });
-
-    document.addEventListener('pointerover', event => {
-      pointer.classList.toggle('hovering', Boolean(event.target.closest('a,button,[onclick],.category-tile')));
-    }, { passive: true });
-
-    document.addEventListener('pointerleave', () => pointer.classList.remove('visible'));
-    window.addEventListener('blur', () => pointer.classList.remove('visible'));
-  }
-
-  initDovePointer();
-
