@@ -964,6 +964,10 @@
   .section-banner:hover img {
     transform: scale(1.03);
   }
+  .section-banner-text {
+    background-color: var(--olive);
+    height: clamp(100px,15vw,150px);
+  }
   .section-banner-caption {
     position: absolute;
     z-index: 10;
@@ -1044,15 +1048,10 @@
     font-variant: small-caps;
     letter-spacing: .06em;
     color: var(--ink);
-    flex-shrink: 0;
+    flex-shrink: 1;
+    min-width: 0;
     max-width: 60%;
-  }
-
-  @media(min-width:480px) {
-    .dish-title {
-      max-width: none;
-      white-space: nowrap;
-    }
+    overflow-wrap: break-word;
   }
   .dish-leader {
     flex: 1;
@@ -1368,3 +1367,4 @@
       transition: none !important;
     }
   }
+

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Dancing+Script:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css?v=20260805"/>
+  <link rel="stylesheet" href="css/style.css?v=20261116"/>
 </head>
 
 <body>
@@ -77,9 +77,9 @@
     <div class="container">
       <h2 class="specialties-heading">Signature <span class="italic">Specialties</span></h2>
       <div class="specialty-grid">
-        <article class="specialty"><div class="specialty-photo"><img src='images/chicken-shawarma-plate.jpg' alt="Chicken Shawarma Plate"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">Chicken Shawarma Plate</h3><span class="specialty-price">$15.99</span></div><p class="specialty-note">Slow-roasted, spiced, and served with rice or mujadara, garlic sauce, and fresh salad.</p></div></article>
-        <article class="specialty"><div class="specialty-photo"><img src='images/new-orleans-burger.jpg' alt="New Orleans Burger"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">New Orleans Burger</h3><span class="specialty-price">$11.99</span></div><p class="specialty-note">Fresh burger meat with barbecue sauce on fresh dough, served with seasoned fries.</p></div></article>
-        <article class="specialty"><div class="specialty-photo"><img src='images/olive-branch-cocktail.jpg' alt="Olive Branch Cocktail"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">Olive Branch Cocktail</h3><span class="specialty-price">$10.99</span></div><p class="specialty-note">Keshta arabic, almond, pistachio, fresh strawberry, fresh banana &amp; milk. Our signature specialty drink.</p></div></article>
+        <article class="specialty"><div class="specialty-photo"><img src='images/chicken-shawarma-plate.jpg' alt="Chicken Shawarma Plate"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">Chicken Shawarma Plate</h3><span class="specialty-price">$15.99</span></div><p class="specialty-note">Served with salad, your choice of rice or mujadara, garlic sauce, tahini &amp; special sauce.</p></div></article>
+        <article class="specialty"><div class="specialty-photo"><img src='images/new-orleans-burger.jpg' alt="Burger &amp; Fries Combo"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">Burger &amp; Fries Combo</h3><span class="specialty-price">$11.99</span></div><p class="specialty-note">Cheese, special sauce &amp; BBQ sauce.</p></div></article>
+        <article class="specialty"><div class="specialty-photo"><img src='images/loaded-fries.jpg' alt="Loaded Fries"/></div><div class="specialty-text"><div class="specialty-top"><h3 class="specialty-name">Loaded Fries</h3><span class="specialty-price">From $7.99</span></div><p class="specialty-note">Choose cheese, chicken or meat loaded fries.</p></div></article>
       </div>
       <div class="centered spaced-top"><button class="full-menu-link" onclick="openSection('menu')">See the full menu</button></div>
     </div>
@@ -95,7 +95,7 @@
         <div class="divider" style="margin-bottom:1.5rem"><span class="line"></span><span class="ornament">❦</span><span class="line"></span></div>
         <div class="option-tag" id="optionTag">Option 1 of 2</div>
         <p class="weekend-name" id="weekend-name">Breakfast for 2 <span class="accent">· $25.99</span></p>
-        <p class="weekend-note" id="weekend-note">A shared Middle Eastern breakfast plate with falafel, cheese arayes, eggs, hummus, labneh, chicken liver, olives, pita bread & tea or coffee.</p>
+        <p class="weekend-note" id="weekend-note">A shared Middle Eastern breakfast plate includes falafel, cheese arayes, eggs, hummus, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil &amp; zaatar, pita bread, pickles, vegetables, tea or coffee.</p>
         <div class="carousel-dots" id="carousel-dots">
           <button class="carousel-dot active" onclick="showWeekendSlide(0)"></button>
           <button class="carousel-dot" onclick="showWeekendSlide(1)"></button>
@@ -153,43 +153,83 @@
 
   <div class="category-bar">
     <div class="category-bar-track" id="category-bar-track">
-      <button class="category-link active" data-target="appetizers">Appetizers</button>
+      <button class="category-link active" data-target="breakfast">Breakfast</button>
+      <button class="category-link" data-target="weekend-breakfast">Weekend Breakfast</button>
+      <button class="category-link" data-target="appetizers">Appetizers</button>
       <button class="category-link" data-target="salad">Salads</button>
-      <button class="category-link" data-target="plates">Plates</button>
-      <button class="category-link" data-target="sandwiches">Sandwiches</button>
-      <button class="category-link" data-target="deluxe">Deluxe Shawarma</button>
-      <button class="category-link" data-target="veggie">Veggie</button>
       <button class="category-link" data-target="burgers">Burgers</button>
       <button class="category-link" data-target="loaded-fries">Loaded Fries</button>
       <button class="category-link" data-target="bowls">Bowls</button>
-      <button class="category-link" data-target="breakfast">Breakfast</button>
-      <button class="category-link" data-target="weekend-breakfast">Weekend Breakfast</button>
+      <button class="category-link" data-target="plates">Plates</button>
+      <button class="category-link" data-target="sides">Extra Sides</button>
+      <button class="category-link" data-target="sandwiches">Sandwiches (14 Inch)</button>
+      <button class="category-link" data-target="veggie">Veggie Sandwiches</button>
+      <button class="category-link" data-target="deluxe">Deluxe Sandwiches</button>
+      <button class="category-link" data-target="kids">Kid’s Menu</button>
       <button class="category-link" data-target="drinks">Drinks</button>
       <button class="category-link" data-target="desserts">Desserts</button>
-      <button class="category-link" data-target="sides">Sides</button>
     </div>
   </div>
+
+  <section class="menu-group" id="breakfast">
+    <div class="section-banner"><img src='images/breakfast-2.jpg' alt="Breakfast"/><div class="section-banner-caption"><span>Breakfast</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Breakfast served all day.</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Eggs with Vegetables</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Liver</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Arayes</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Arayes</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Spicy Potatoes</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Cauliflower</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Eggplant</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Labneh</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div><p class="dish-detail">Add zaatar or shatta.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Labneh Jerashiya</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Pancakes</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Cheese &amp; Turkey</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Cheese</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Zait &amp; Zaatar</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Eggs with Potatoes</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish dish-wide"><div class="dish-row"><span class="dish-title">Shakshuka</span><span class="dish-leader"></span><span class="dish-cost">SM $8.99 / LG $14.99</span></div><p class="dish-detail">Poached eggs in a rich spicy tomato sauce, served with bread. Add cheese +$1.49</p></div>
+    </div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="weekend-breakfast">
+    <div class="section-banner"><img src='images/weekend-breakfast.jpg' alt="Weekend Breakfast" style='object-position:center 40%'/><div class="section-banner-caption"><span>Weekend Breakfast</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Saturday &amp; Sunday only.</p><div class="combo-grid">
+      <div class="combo-card"><div class="combo-row"><span class="combo-name">Breakfast for 2</span><span class="combo-leader"></span><span class="combo-cost">$25.99</span></div><p class="combo-detail">A shared Middle Eastern breakfast plate includes falafel, cheese arayes, eggs, hummus, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil &amp; zaatar, pita bread, pickles, vegetables, tea or coffee.</p></div>
+      <div class="combo-card"><div class="combo-row"><span class="combo-name">Breakfast for 4</span><span class="combo-leader"></span><span class="combo-cost">$45.99</span></div><p class="combo-detail">A large family-style breakfast plate includes falafel, cheese arayes, eggs, hummus, baba ghanoush, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil &amp; zaatar, pita bread, pickles, vegetables, tea or coffee.</p></div>
+    </div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
 
   <section class="menu-group" id="appetizers">
     <div class="section-banner"><img src='images/appetizers.jpg' alt="Appetizers"/><div class="section-banner-caption"><span>Appetizers</span></div></div>
     <div class="menu-group-body"><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Fattah Hummus</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Creamy hummus mixed with pita and yogurt.</p></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Arayes</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div><p class="dish-detail">Grilled bread stuffed with spiced meat and toasted to perfection.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fattah Hummus</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Creamy hummus mixed with pita &amp; yogurt.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Arayes</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div><p class="dish-detail">Grilled bread stuffed with spiced meat &amp; toasted to perfection.</p></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Arayes &amp; Thyme</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div><p class="dish-detail">Grilled bread stuffed with melted cheese &amp; fragrant thyme.</p></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel (8 pc)</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel (6 pc)</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel (12 pc)</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Fried Kibbeh (4 pc)</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Fried Cheese Rolls (4 pc)</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Grape Leaves (8 pc)</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grape Leaves (12 pc)</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Wings (6 pc)</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Wings (12 pc)</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mozzarella Sticks (8 pc)</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Lentil Soup</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Seasoned Fries</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Seasoned Fries</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Fried Cauliflower</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Fried Eggplant</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Olives</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Hummus</span><span class="dish-leader"></span><span class="dish-cost">$6.49</span></div><p class="dish-detail">Add meat or chicken with nuts +$3.99</p></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Baba Ganoush</span><span class="dish-leader"></span><span class="dish-cost">$6.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Hummus</span><span class="dish-leader"></span><span class="dish-cost">SM $6.99 / LG $9.99</span></div><p class="dish-detail">Add ground beef or meat shawarma +$3.99</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Baba Ganoush</span><span class="dish-leader"></span><span class="dish-cost">SM $6.99 / LG $9.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Foul (Fava Beans)</span><span class="dish-leader"></span><span class="dish-cost">$6.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Patata Harra</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Qalayat Bandoura</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div><p class="dish-detail">Add Meat +$3.99</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Halloumi Cheese</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Patata Harra (Spicy)</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Qalayat Bandoura</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div><p class="dish-detail">Add meat +$3.99</p></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Musakhan Rolls</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Tenders (4 pc)</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Nuggets</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
@@ -197,198 +237,181 @@
       <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Quesadilla</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Mujadara</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div><p class="dish-detail">Brown lentils, bulgur shells &amp; fried onions.</p></div>
     </div>
-  </div>
+    </div>
   </section>
   <div class="section-rule"></div>
 
   <section class="menu-group" id="salad">
-    <div class="section-banner"><img src='images/salads.jpg' alt="Salad"/><div class="section-banner-caption"><span>Salad</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">Add Grilled Chicken, Shawarma Chicken or Zinger (Tender Chicken) +$3.99</p><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Fattoush</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Tabbouleh</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Greek Salad</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Tahini Salad</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+    <div class="section-banner"><img src='images/salads.jpg' alt="Salads"/><div class="section-banner-caption"><span>Salads</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Add grilled chicken, shawarma chicken or zinger (tender chicken) +$3.99</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fattoush Salad</span><span class="dish-leader"></span><span class="dish-cost">SM $5.99 / LG $7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tabbouleh Salad</span><span class="dish-leader"></span><span class="dish-cost">SM $5.99 / LG $7.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Greek Salad</span><span class="dish-leader"></span><span class="dish-cost">SM $6.99 / LG $8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tahini Salad</span><span class="dish-leader"></span><span class="dish-cost">SM $4.99 / LG $6.99</span></div></div>
     </div>
-  </div>
-  </section>
-  <div class="section-rule"></div>
-
-  <section class="menu-group" id="plates">
-    <div class="section-banner"><img src='images/plates-2.jpg' alt="Plates"/><div class="section-banner-caption"><span>Plates</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">Served with salad &amp; your choice of rice or mujadara, garlic sauce, tahini, &amp; special sauce.</p><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$15.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$17.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Kofta Plate (3 skewers)</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Plate</span><span class="dish-leader"></span><span class="dish-cost">$14.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Kabob (3)</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Tawook Plate (3)</span><span class="dish-leader"></span><span class="dish-cost">$17.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Kufta Tahini Plate (3)</span><span class="dish-leader"></span><span class="dish-cost">$18.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Kufta Banadora</span><span class="dish-leader"></span><span class="dish-cost">$18.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Crispy Chicken Plate</span><span class="dish-leader"></span><span class="dish-cost">$15.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Plate for 2</span><span class="dish-leader"></span><span class="dish-cost">$39.99</span></div><p class="dish-detail">2 meat kabab, 2 kofta, 2 shish tawook.</p></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Grill Plate</span><span class="dish-leader"></span><span class="dish-cost">$20.99</span></div><p class="dish-detail">Meat kabab, kofta, shish tawook, rice.</p></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Grilled Chicken Plate</span><span class="dish-leader"></span><span class="dish-cost">$14.99</span></div><p class="dish-detail">Also served with vegetables.</p></div>
-      <div class="platter-wrap"><div class="platter"><div class="dish-row"><span class="dish-title">Family Platter<span class="platter-tag">Serves 6–8</span></span><span class="dish-leader"></span><span class="dish-cost">$149.99</span></div><p class="dish-detail">4 beef kabob, 4 kufta, 4 shish tawook, 1 lb chicken, 1 lb meat shawarma, grilled onions, grilled tomatoes, hummus &amp; fries.</p></div></div>
     </div>
-  </div>
-  </section>
-  <div class="section-rule"></div>
-
-  <section class="menu-group" id="sandwiches">
-    <div class="section-banner"><img src='images/sandwiches-2.jpg' alt="Sandwiches"/><div class="section-banner-caption"><span>Sandwiches</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">Make It a Combo: Fries + Drink (Cola, Sprite) +$2.99</p><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Zinger</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Tender chicken, garlic, special sauce, tomatoes &amp; lettuce.</p></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Spicy Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Spicy sauce, cheese, pomegranate sauce &amp; garlic.</p></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Spicy</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$11.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Kofta Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Kabob Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
-    </div>
-  </div>
-  </section>
-  <div class="section-rule"></div>
-
-  <section class="menu-group" id="deluxe">
-    <div class="section-banner"><img src='images/sandwiches.jpg' alt="Deluxe Shawarma"/><div class="section-banner-caption"><span>Deluxe Shawarma</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">All sandwiches fully stuffed with cabbage, lettuce, hummus, garlic sauce, pickles &amp; pomegranate molasses. Combo: Fries + Drink +$2.99</p><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Deluxe Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Deluxe Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Deluxe Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$13.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Deluxe</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
-    </div>
-  </div>
-  </section>
-  <div class="section-rule"></div>
-
-  <section class="menu-group" id="veggie">
-    <div class="section-banner"><img src='images/veggie-sandwiches.jpg' alt="Veggie Sandwiches"/><div class="section-banner-caption"><span>Veggie Sandwiches</span></div></div>
-    <div class="menu-group-body"><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Grape Leaves Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Fries Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div><p class="dish-detail">Add Tabouli +$2.99</p></div>
-    </div>
-  </div>
   </section>
   <div class="section-rule"></div>
 
   <section class="menu-group" id="burgers">
     <div class="section-banner"><img src='images/burgers.jpg' alt="Burgers"/><div class="section-banner-caption"><span>Burgers</span></div></div>
     <div class="menu-group-body"><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">New Orleans Burger</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div><p class="dish-detail">Fresh burger meat with barbecue sauce on fresh dough, served with seasoned fries.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Burger &amp; Fries Combo</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div><p class="dish-detail">Cheese, special sauce &amp; BBQ sauce.</p></div>
     </div>
-  </div>
+    </div>
   </section>
   <div class="section-rule"></div>
 
   <section class="menu-group" id="loaded-fries">
     <div class="section-banner"><img src='images/loaded-fries.jpg' alt="Loaded Fries"/><div class="section-banner-caption"><span>Loaded Fries</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">Meat, chicken, ketchup, mayo, special sauce, white sauce, parmesan &amp; cheddar cheese.</p><div class="dish-list">
+    <div class="menu-group-body"><p class="menu-group-note">Served with ketchup, mayo, white sauce, parmesan cheese, cheddar cheese, corn, black olives, onion, pickles, mixed cheese &amp; special sauce.</p><div class="dish-list">
       <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Loaded Fries</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Loaded Fries</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Meat Loaded Fries</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
     </div>
-  </div>
+    </div>
   </section>
   <div class="section-rule"></div>
 
   <section class="menu-group" id="bowls">
     <div class="section-banner"><img src='images/bowls.jpg' alt="Bowls"/><div class="section-banner-caption"><span>Bowls</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">Served with your choice of rice or mujadara, tomatoes, pickles, onions, garlic sauce, special sauce &amp; tahini sauce.</p><div class="dish-list">
+    <div class="menu-group-body"><div class="dish-list">
       <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Shawarma Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken/Meat Shawarma Bowl</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Make Your Own Bowl</span><span class="dish-leader"></span><span class="dish-cost">$14.99</span></div><p class="dish-detail">Your choice of meat, chicken, falafel, corn, cabbage, black olives, onions, fries, pickles, turnip, special sauce, garlic, tahini sauce, cauliflower &amp; eggplant.</p></div>
     </div>
-  </div>
+    </div>
   </section>
   <div class="section-rule"></div>
 
-  <section class="menu-group" id="breakfast">
-    <div class="section-banner"><img src='images/breakfast-2.jpg' alt="Breakfast"/><div class="section-banner-caption"><span>Breakfast</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">We serve breakfast daily.</p><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Eggs</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Liver</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Cheese Arayes</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Arayes</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Spicy Potatoes</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Cauliflower</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Fried Eggplant</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Halloumi Cheese</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Labneh</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Labneh Jerashiya</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Pancakes</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Cheese &amp; Turkey</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Cheese</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mangosh Zait &amp; Zaatar</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Eggs With Hashbrowns</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div><p class="dish-detail">All eggs cooked on fresh dough.</p></div>
-      <div class="dish dish-wide"><div class="dish-row"><span class="dish-title">Shakshuka</span><span class="dish-leader"></span><span class="dish-cost">Sm $8.99 / Lg $14.99</span></div><p class="dish-detail">Poached eggs in a rich spicy tomato sauce, served with bread. Add Cheese +$1.49</p></div>
+  <section class="menu-group" id="plates">
+    <div class="section-banner"><img src='images/plates-2.jpg' alt="Plates"/><div class="section-banner-caption"><span>Plates</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Served with salad &amp; your choice of rice or mujadara, garlic sauce, tahini &amp; special sauce.</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$15.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Shawarma Plate</span><span class="dish-leader"></span><span class="dish-cost">$17.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kofta Plate (3 skewers)</span><span class="dish-leader"></span><span class="dish-cost">$16.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel Plate</span><span class="dish-leader"></span><span class="dish-cost">$14.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Kabob (3)</span><span class="dish-leader"></span><span class="dish-cost">$19.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Tawook Plate (3)</span><span class="dish-leader"></span><span class="dish-cost">$17.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kufta Tahini Plate (3)</span><span class="dish-leader"></span><span class="dish-cost">$18.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kufta Banadora</span><span class="dish-leader"></span><span class="dish-cost">$18.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Crispy Chicken Plate</span><span class="dish-leader"></span><span class="dish-cost">$15.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grilled Shrimp</span><span class="dish-leader"></span><span class="dish-cost">$19.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mixed Grill Plate</span><span class="dish-leader"></span><span class="dish-cost">$20.99</span></div><p class="dish-detail">Meat kabab, kofta, shish tawook.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grilled Chicken Plate</span><span class="dish-leader"></span><span class="dish-cost">$14.99</span></div><p class="dish-detail">Also served with vegetables.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Plate for 2</span><span class="dish-leader"></span><span class="dish-cost">$39.99</span></div><p class="dish-detail">2 meat kabab, 2 kofta, 2 shish tawook.</p></div>
+      <div class="platter-wrap"><div class="platter"><div class="dish-row"><span class="dish-title">Family Platter<span class="platter-tag">Serves 6–8</span></span><span class="dish-leader"></span><span class="dish-cost">$149.99</span></div><p class="dish-detail">4 beef kabob, 4 kufta, 4 shish tawook, 1 lb chicken, 1 lb meat shawarma, grilled onions, grilled tomatoes, hummus &amp; fries.</p></div></div>
     </div>
-  </div>
-  </section>
-  <div class="section-rule"></div>
-
-  <section class="menu-group" id="weekend-breakfast">
-    <div class="section-banner"><img src='images/weekend-breakfast.jpg' alt="Weekend Breakfast" style='object-position:center 40%'/><div class="section-banner-caption"><span>Weekend Breakfast</span></div></div>
-    <div class="menu-group-body"><p class="menu-group-note">Saturday &amp; Sunday only.</p>
-    <div class="combo-grid">
-      <div class="combo-card"><div class="combo-row"><span class="combo-name">Breakfast for 2</span><span class="combo-leader"></span><span class="combo-cost">$25.99</span></div><p class="combo-detail">Falafel, cheese arayes, eggs, hummus, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil &amp; zaatar, pita bread, pickles, vegetables, tea or coffee.</p></div>
-      <div class="combo-card"><div class="combo-row"><span class="combo-name">Breakfast for 4</span><span class="combo-leader"></span><span class="combo-cost">$45.99</span></div><p class="combo-detail">Falafel, cheese arayes, eggs, hummus, baba ghanoush, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil &amp; zaatar, pita bread, pickles, vegetables, tea or coffee.</p></div>
     </div>
-  </div></section><div class="section-rule"></div>
-
-  <section class="menu-group" id="drinks"><div class="section-banner"><img src='images/drinks.jpg' alt="Drinks" style='object-position:center center'/><div class="section-banner-caption"><span>Drinks</span></div></div><div class="menu-group-body">
-      <div class="drink-group"><div class="drink-group-label">Fresh Juices &amp; Smoothies</div><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Orange Juice</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Lemon &amp; Mint</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mango Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Strawberry Banana Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Berry Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
-    </div></div>
-      <div class="drink-group"><div class="drink-group-label">Hilwas</div><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Lemonade</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Orange Lemonade</span><span class="dish-leader"></span><span class="dish-cost">$4.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Strawberry Lemonade</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Mango Juice</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
-    </div></div>
-      <div class="drink-group"><div class="drink-group-label">Olive Branch Tea &amp; Coffee</div><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Cup of Tea</span><span class="dish-leader"></span><span class="dish-cost">$2.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Tea Pot for 3</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Tea Pot for 6</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">American Coffee</span><span class="dish-leader"></span><span class="dish-cost">$3.49</span></div></div>
-    </div></div>
-      <div class="drink-group"><div class="drink-group-label">Olive Branch Cocktail</div><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Olive Branch Cocktail</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Keshta arabic, almond, pistachio, fresh strawberry, fresh banana &amp; milk.</p></div>
-    </div></div>
-      <div class="drink-group"><div class="drink-group-label">Beverages</div><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Coke / Sprite</span><span class="dish-leader"></span><span class="dish-cost">$2.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Energy Drink</span><span class="dish-leader"></span><span class="dish-cost">$4.49</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Palestinian Drink</span><span class="dish-leader"></span><span class="dish-cost">$3.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Yogurt Drink</span><span class="dish-leader"></span><span class="dish-cost">$3.99</span></div></div>
-    </div></div>
-  </div></section><div class="section-rule"></div>
-
-  <section class="menu-group" id="desserts">
-    <div class="section-banner"><img src='images/desserts-2.jpg' alt="Desserts"/><div class="section-banner-caption"><span>Desserts</span></div></div>
-    <div class="menu-group-body"><div class="dish-list">
-      <div class="dish"><div class="dish-row"><span class="dish-title">Baklava</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
-      <div class="dish"><div class="dish-row"><span class="dish-title">Kunafa</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
-    </div>
-  </div>
   </section>
   <div class="section-rule"></div>
 
   <section class="menu-group" id="sides">
-    <div class="section-banner"><img src='images/sides.jpg' alt="Sides"/><div class="section-banner-caption"><span>Extra Side of Sauce</span></div></div>
+    <div class="section-banner"><img src='images/sides.jpg' alt="Extra Sides"/><div class="section-banner-caption"><span>Extra Sides</span></div></div>
     <div class="menu-group-body"><div class="dish-list">
       <div class="dish"><div class="dish-row"><span class="dish-title">Garlic Sauce</span><span class="dish-leader"></span><span class="dish-cost">$1.20</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Special Sauce</span><span class="dish-leader"></span><span class="dish-cost">$1.20</span></div></div>
       <div class="dish"><div class="dish-row"><span class="dish-title">Side of Pita</span><span class="dish-leader"></span><span class="dish-cost">$1.20</span></div></div>
     </div>
-  </div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="sandwiches">
+    <div class="section-banner"><img src='images/sandwiches-2.jpg' alt="Sandwiches (14 Inch)"/><div class="section-banner-caption"><span>Sandwiches (14 Inch)</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Make it a combo: Fries + Drink (Cola, Sprite) +$3.99</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Zinger</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Tender chicken, garlic, special sauce, tomatoes &amp; lettuce. Add turkey slices +$2.99</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Spicy Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div><p class="dish-detail">Spicy sauce, cheese, pomegranate sauce &amp; garlic.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma Spicy</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat/Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$11.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kofta Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Shish Kabob Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div><p class="dish-detail">Served with garlic, tahini &amp; special sauce.</p></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Tawook Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fajita Meat with Cheese</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Ahmad Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$13.99</span></div><p class="dish-detail">Grilled vegetables, corn, onions, green peppers, with cheese &amp; chicken.</p></div>
+    </div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="veggie">
+    <div class="section-banner"><img src='images/veggie-sandwiches.jpg' alt="Veggie Sandwiches"/><div class="section-banner-caption"><span>Veggie Sandwiches</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">Add fried eggplant or fried cauliflower +$2.99. Make it a combo: Fries + Drink (Cola, Sprite) +$3.99</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grape Leaves</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mujadra Sandwich</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Fries</span><span class="dish-leader"></span><span class="dish-cost">$7.99</span></div></div>
+    </div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="deluxe">
+    <div class="section-banner"><img src='images/sandwiches.jpg' alt="Deluxe Sandwiches"/><div class="section-banner-caption"><span>Deluxe Sandwiches</span></div></div>
+    <div class="menu-group-body"><p class="menu-group-note">All sandwiches are fully stuffed with cabbage, lettuce, hummus, garlic sauce, pickles &amp; pomegranate molasses. Make it a combo: Fries + Drink (Cola, Sprite) +$3.99</p><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$11.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$12.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Meat/Chicken Shawarma</span><span class="dish-leader"></span><span class="dish-cost">$13.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Falafel</span><span class="dish-leader"></span><span class="dish-cost">$10.99</span></div></div>
+    </div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="kids">
+    <div class="section-banner section-banner-text"><div class="section-banner-caption"><span>Kid’s Menu</span></div></div>
+    <div class="menu-group-body"><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cheeseburger</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">2 Tenders with Fries</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Pancakes</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Chicken Nuggets</span><span class="dish-leader"></span><span class="dish-cost">$6.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Grilled Cheese</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+    </div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="drinks">
+    <div class="section-banner"><img src='images/drinks.jpg' alt="Drinks" style='object-position:center center'/><div class="section-banner-caption"><span>Drinks</span></div></div>
+    <div class="menu-group-body"><div class="drink-group"><div class="drink-group-label">Fresh Juices</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Orange Juice</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Lemon &amp; Mint</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+    </div></div>
+      <div class="drink-group"><div class="drink-group-label">Smoothies</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Mango Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Strawberry Banana Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Berry Smoothie</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+    </div></div>
+      <div class="drink-group"><div class="drink-group-label">Tea &amp; Coffee</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Cup of Tea</span><span class="dish-leader"></span><span class="dish-cost">$2.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tea Pot for 3</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Tea Pot for 6</span><span class="dish-leader"></span><span class="dish-cost">$9.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">American Coffee</span><span class="dish-leader"></span><span class="dish-cost">$3.49</span></div></div>
+    </div></div>
+      <div class="drink-group"><div class="drink-group-label">Beverages</div><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Coke, Sprite, Diet Coke, etc.</span><span class="dish-leader"></span><span class="dish-cost">$2.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Energy Drink</span><span class="dish-leader"></span><span class="dish-cost">$4.49</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Palestinian Drink</span><span class="dish-leader"></span><span class="dish-cost">$3.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Yogurt Drink</span><span class="dish-leader"></span><span class="dish-cost">$3.99</span></div></div>
+    </div></div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+
+  <section class="menu-group" id="desserts">
+    <div class="section-banner"><img src='images/desserts-2.jpg' alt="Desserts"/><div class="section-banner-caption"><span>Desserts</span></div></div>
+    <div class="menu-group-body"><div class="dish-list">
+      <div class="dish"><div class="dish-row"><span class="dish-title">Baklava</span><span class="dish-leader"></span><span class="dish-cost">$5.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kunafa Fine</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Kunafa Coarse</span><span class="dish-leader"></span><span class="dish-cost">$8.99</span></div></div>
+      <div class="dish"><div class="dish-row"><span class="dish-title">Rice Pudding</span><span class="dish-leader"></span><span class="dish-cost">$4.99</span></div></div>
+    </div>
+    </div>
   </section>
 
   <div class="closing">
@@ -415,6 +438,7 @@
 
 </div>
 
-<script src="js/app.js?v=20260805" defer></script>
+<script src="js/app.js?v=20261116" defer></script>
 </body>
 </html>
+

@@ -2,12 +2,12 @@
     {
       name: "Breakfast for 2",
       price: "$25.99",
-      desc: "A shared Middle Eastern breakfast plate with falafel, cheese arayes, eggs, hummus, labneh, chicken liver, olives, pita bread & tea or coffee."
+      desc: "A shared Middle Eastern breakfast plate includes falafel, cheese arayes, eggs, hummus, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil & zaatar, pita bread, pickles, vegetables, tea or coffee."
     },
     {
       name: "Breakfast for 4",
       price: "$45.99",
-      desc: "A large family-style breakfast plate with falafel, cheese arayes, eggs, hummus, baba ghanoush, labneh, chicken liver, olives, pita bread & tea or coffee."
+      desc: "A large family-style breakfast plate includes falafel, cheese arayes, eggs, hummus, baba ghanoush, labneh, labneh mudhabbara Jerashiya, chicken liver, olives, olive oil & zaatar, pita bread, pickles, vegetables, tea or coffee."
     }
   ];
 
@@ -139,3 +139,4 @@
     advanceWeekend,
     rewindWeekend
   });
+
